@@ -26,7 +26,7 @@ manager.
 Example
 -------
 
-.. code:: python
+::
 
   class Article(HighlighterMixin, models.Model):
       title = models.CharField(max_length=150)
