@@ -33,4 +33,5 @@ Example
       publication_date = models.DateTimeField()
 
   highlighted_articles = Article.highlighteds.all()
-  all_but_highlighted_first = Article.objects.order_by('-highlighted', '-highligh_priority', '-publication_date')
+  all_but_highlighted_first = Article.objects.order_by(
+      '-highlighted', '-highligh_priority', '-publication_date')
