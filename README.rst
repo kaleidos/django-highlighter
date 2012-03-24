@@ -22,3 +22,15 @@ To use django-highlighter you only have to add the HighlighterMixin to your
 models, and this will add 2 fields highlighted (boolean) and highlight_priority
 (integer). You can use this fields directly or use the Model.highlighteds
 manager.
+
+Example
+-------
+
+.. code:: python
+
+  class Article(HighlighterMixin, models.Model):
+      title = models.CharField(max_length=150)
+      publication_date = models.DateTimeField()
+
+  highlighted_articles = Article.highlighteds.all()
+  all_but_highlighted_first = Article.objects.order_by('-highlighted', '-highligh_priority', '-publication_date')
