@@ -1,15 +1,15 @@
 Django Highlighter
 ==================
 
-Django highlighter is an app to highlight objects in your app, and give it a
-priority.
+Django highlighter is an app to highlight and/or prioritise objects in your app.
 
 Configuration
 -------------
 
 Adding it to installed apps is not necesary.
 
-You can configure the "range" of posible priority values with the HIGHLIGHTER_PRIORITY_RANGE setting, for example:
+You can configure the "range" of posible priority values with the 
+HIGHLIGHTER_PRIORITY_RANGE setting, for example:
 
 HIGHLIGHTER_PRIORITY_RANGE = [1,10]
 
@@ -20,8 +20,8 @@ Usage
 
 To use django-highlighter you only have to add the HighlighterMixin to your
 models, and this will add 2 fields highlighted (boolean) and highlight_priority
-(integer). You can use this fields directly or use the Model.highlighteds
-manager.
+(integer). You can use this fields directly or use the Model.highlighted_objects
+and/or Model.prioritized_objects managers.
 
 Example
 -------
@@ -32,6 +32,5 @@ Example
       title = models.CharField(max_length=150)
       publication_date = models.DateTimeField()
 
-  highlighted_articles = Article.highlighteds.all()
-  all_but_highlighted_first = Article.objects.order_by(
-      '-highlighted', '-highligh_priority', '-publication_date')
+  highlighted_articles = Article.highlighted_objects.all()
+  all_prioritized_articles = Article.prioritized_objects.order_by('-publication_date')
